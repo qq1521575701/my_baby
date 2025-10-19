@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จดหมายรักถึงคุณ</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: "华文行楷", "FangSong", "Sarabun", cursive;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 80%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .quotes {
+      font-size: 1.2em;
+      margin: 10px auto;
+      min-height: 60px;
+    }
+
+    #box1 {
+      font-size: 2em;
+      margin-top: 15px;
+      color: #ffe7f9;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+    .quotes {
+      font-size: 1.5em;
+      height: 80px;
+      padding: 10%;
+      color: #ff69b4; /* 热情的粉红色（Hot Pink） */
+    }
+
+    #box1 {
+      font-size: 1.5em;
+      color: #ff7f50; /* 珊瑚橙色（Coral），温暖又柔和 */
+    }
+    }
+  </style>
+</head> 
+
+<body>
+  <div class="card">
+    <h1>จดหมายรักถึงคุณ 💌</h1>
+
+    <img src="1.jpg" alt="你的照片">
+
+    <div class="quotes" id="quoteBox">ตั้งแต่ที่ฉันพบคุณ โลกของฉันก็แตกต่างไป</div>
+
+    <p id="box1"></p>
+  </div>
+
+  <script>
+    const quoteBox = document.getElementById("quoteBox");
+    const box1 = document.getElementById("box1");
+
+    const quotes = [
+      "ตั้งแต่ที่ฉันพบคุณ โลกของฉันก็แตกต่างไป",
+      "รอยยิ้มของคุณ เสียงของคุณ ทุกสิ่งเกี่ยวกับคุณทำให้ฉันหลงใหล",
+      "หัวใจของฉันมันมีชื่อของเธออยู่ในนั้นเสมอ",
+      "อยากตื่นมาเจอหน้าเธอทุกวันเลย",
+      "เธอคือคำตอบของคำถามทั้งหมดในชีวิตฉัน",
+      "ฉันรักเธอมากกว่าคำพูดจะบรรยายได้",
+      "แค่ได้อยู่กับเธอ โลกก็สวยงามขึ้นมาเลย",
+      "เธอเป็นแสงแดดในวันฝนตกของฉัน",
+      "ทุกช่วงเวลาที่มีกับเธอ มีค่ากว่าทองคำ"
+    ];
+
+    let index = 0;
+    function rotateQuotes() {
+      quoteBox.innerText = quotes[index];
+      index = (index + 1) % quotes.length;
+    }
+
+    setInterval(rotateQuotes, 5000);
+    rotateQuotes();
+
+    // 设置你们认识的时间
+    const startDate = new Date(2025, 0, 26, 0, 0, 0); // 2025-01-26
+
+    function updateTime() {
+      const now = new Date();
+      let diff = Math.floor((now - startDate) / 1000);
+
+      const days = Math.floor(diff / (3600 * 24));
+      diff %= 3600 * 24;
+      const hours = Math.floor(diff / 3600);
+      diff %= 3600;
+      const minutes = Math.floor(diff / 60);
+      const seconds = diff % 60;
+
+      box1.innerHTML = `เราอยู่ด้วยกัน ${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
